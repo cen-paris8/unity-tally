@@ -1,0 +1,8 @@
+.vs/
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp.csproj
+Library/
+Logs/
+Tally.sln
+Temp/
+obj/
