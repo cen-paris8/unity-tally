@@ -2,12 +2,15 @@
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Attached to GO DataController in Persistent scene.
 public class DataController : MonoBehaviour
 {
     //List<RoundData> allRoundData = new List<RoundData>();
     public GameData[] gameDatas;
+    public Text debudText;
+
     private DBHandler dbHandler;
 
     private PlayerProgress playerProgress;
@@ -124,7 +127,7 @@ public class DataController : MonoBehaviour
         GameArrayData loadedData = JsonUtility.FromJson<GameArrayData>(dataAsJson);
         gameDatas = loadedData.allGameData;
         LoadPlayerProgress();
-
+        //debudText.GetComponentInParent<Canvas>().gameObject.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene(firstScene);       
     }
     public void LoadDataGame()
@@ -146,22 +149,26 @@ public class DataController : MonoBehaviour
 
     public Sprite getImageSprite(string questionDataImage)
     {
+        //debudText.GetComponentInParent<Canvas>().gameObject.SetActive(true);
+        debudText.text += "; Image name : " + questionDataImage;
 
-
-            Sprite newSprite;
+    Sprite newSprite;
             Texture2D spriteTexture;
             string filePath = resourcesPath + questionDataImage; // "RenoirValadon.jpg";
             Texture2D tex2D;
             byte[] fileData;
+        debudText.text += "; file path : " + filePath;
 
             if (File.Exists(filePath)) // filePath
             {
                 print("File exists");
+            debudText.text += "; File exists  ";
                 fileData = File.ReadAllBytes(filePath);
                 tex2D = new Texture2D(2, 2);           // Create new "empty" texture
                 if (tex2D.LoadImage(fileData))
                 {
-                    print("Load Image");
+                debudText.text += "; Load Image ";
+                print("Load Image");
                     spriteTexture = tex2D; // If data = readable -> return texture
                     newSprite = Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
 
@@ -169,6 +176,7 @@ public class DataController : MonoBehaviour
                 return newSprite;
                 }
             }
+        debudText.text += "; getImageSprite  ";
         newSprite = null;
         return newSprite;
 
