@@ -1,0 +1,191 @@
+﻿{
+  "allGameData": [
+    {
+      "name": "Quizz",
+      "allRoundData": [
+        {
+          "name": "La belle époque",
+          "timeLimitInSeconds": 120,
+          "pointsAddedForCorrectAnswer": 10,
+          "questions": [
+            {
+              "questionText": "Après la défaite de la guerre franco-prussienne, la France retrouve une certaine insouciance que marquent les grandes réussites économiques. Quelle est la date de la fin de la guerre?",
+              "answers": [
+                {
+                  "answerText": "1871",
+                  "isCorrect": true
+                },
+                {
+                  "answerText": "1862",
+                  "isCorrect": false
+                },
+                {
+                  "answerText": "1805",
+                  "isCorrect": false
+                },
+                {
+                  "answerText": "1910",
+                  "isCorrect": false
+                }
+              ]
+            },
+            {
+              "questionText": "Qui a peint ce portrait de Suzanne Valadon?",
+              "questionImage": "RenoirValadon.jpg",
+              "answers": [
+                {
+                  "answerText": "Renoir",
+                  "isCorrect": true
+                },
+                {
+                  "answerText": "Picasso",
+                  "isCorrect": false
+                }
+              ]
+            },
+            {
+              "questionText": "Comment s'appeler le chat de Suzanne Valadon ?",
+              "answers": [
+                {
+                  "answerText": "Raminou",
+                  "isCorrect": true
+                },
+                {
+                  "answerText": "Rominet",
+                  "isCorrect": false
+                },
+                {
+                  "answerText": "Mistigris",
+                  "isCorrect": false
+                },
+                {
+                  "answerText": "Chamicha",
+                  "isCorrect": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Intru",
+      "allRoundData": [
+        {
+          "name": "Steinlen",
+          "timeLimitInSeconds": 30,
+          "pointsAddedForCorrectAnswer": 10,
+          "questions": [
+            {
+              "questionText": "Trouver l'intru. Quelle image n'est pas tirée d'un tableau de Steinlen?",
+              "answers": [
+                {
+                  "answerText": "",
+                  "answerImage": "Steinlen003.JPG",
+                  "isCorrect": true
+                },
+                {
+                  "answerText": "",
+                  "answerImage": "Steinlen042.JPG",
+                  "isCorrect": false
+                },
+                {
+                  "answerText": "",
+                  "answerImage": "Steinlen047.JPG",
+                  "isCorrect": false
+                },
+                {
+                  "answerText": "",
+                  "answerImage": "Steinlen053.JPG",
+                  "isCorrect": false
+                }
+              ]
+            },
+            {
+              "questionText": "Lequel de ces artistes ne fréquentait pas les ateliers de Montmartre ?",
+              "answers": [
+                {
+                  "answerText": "Gauguin",
+                  "answerImage": "",
+                  "isCorrect": true
+                },
+                {
+                  "answerText": "Steinlen",
+                  "answerImage": "",
+                  "isCorrect": false
+                },
+                {
+                  "answerText": "Renoir",
+                  "answerImage": "",
+                  "isCorrect": false
+                },
+                {
+                  "answerText": "Toulouse Lautrec",
+                  "answerImage": "",
+                  "isCorrect": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Input",
+      "allRoundData": [
+        {
+          "name": "Artistes contemporains",
+          "timeLimitInSeconds": 30,
+          "pointsAddedForCorrectAnswer": 10,
+          "questions": [
+            {
+              "questionText": "Quel célèbre musicien était fou amoureux de Suzanne Valadon ?",
+              "questionAudio": "Satie",
+              "questionResponse": "Erik Satie",
+              "questionType": "Input",
+              "answers": [
+                {
+                  "answerText": "",
+                  "isCorrect": true
+                }
+              ]
+            },
+            {
+              "questionText": "Quel est l'auteur cet extrait?",
+              "questionAudio": "Zola",
+              "questionResponse": "Zola",
+              "questionType": "Input",
+              "answers": [
+                {
+                  "answerText": "",
+                  "isCorrect": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Puzzle",
+      "allRoundData": [
+        {
+          "name": "Steinlen",
+          "timeLimitInSeconds": 120,
+          "pointsAddedForCorrectAnswer": 20,
+          "questions": [
+            {
+              "questionText": "",
+              "questionImage": "Steinlen042.jpg",
+              "answers": [
+                {
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  
+}

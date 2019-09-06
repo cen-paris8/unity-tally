@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     public GameObject questionDisplay;
     public GameObject imageDisplay;
     public GameObject roundEndDisplay;
+    public GameObject imagePresentDisplay;
 
     private DataController dataController;
     private RoundData currentRoundData;
@@ -39,7 +40,16 @@ public class GameController : MonoBehaviour
     {
         dataController = FindObjectOfType<DataController>();
         //currentRoundData = dataController.GetCurrentRoundData("Quizz");
-        currentRoundData = dataController.GetCurrentRoundData(GameNameScript.Instance.gameName);
+        string gameName = GameNameScript.Instance.gameName;
+        currentRoundData = dataController.GetCurrentRoundData(gameName);
+        if (gameName == "EndGame")
+        {
+            EndRound();
+        }
+
+        string imageName = gameName + ".jpg";
+        imagePresentDisplay.GetComponent<Image>().sprite = dataController.getImageSprite(imageName);
+
 
         questionPool = currentRoundData.questions;
         timeRemaining = currentRoundData.timeLimitInSeconds;
@@ -160,8 +170,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-
-
     public void EndRound()
     {
         isRoundActive = false;
@@ -188,5 +196,11 @@ public class GameController : MonoBehaviour
         {
             EndRound();
         }
+    }
+
+    public void StartGame()
+    {
+        Debug.Log("Start Game");
+        imagePresentDisplay.SetActive(false);
     }
 }

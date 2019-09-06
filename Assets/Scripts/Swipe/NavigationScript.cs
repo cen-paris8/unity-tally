@@ -27,8 +27,8 @@ public class NavigationScript : MonoBehaviour
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("Swipe");
-        GameNameScript.Instance.gameName = "Swipe";
+        SceneManager.LoadScene("Map");
+        GameNameScript.Instance.gameName = "Map";
     }
 }
 

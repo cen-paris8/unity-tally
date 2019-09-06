@@ -80,22 +80,18 @@
               "questionText": "Trouver l'intru. Quelle image n'est pas tirée d'un tableau de Steinlen?",
               "answers": [
                 {
-                  "answerText": "",
                   "answerImage": "Steinlen003.JPG",
                   "isCorrect": true
                 },
                 {
-                  "answerText": "",
                   "answerImage": "Steinlen042.JPG",
                   "isCorrect": false
                 },
                 {
-                  "answerText": "",
                   "answerImage": "Steinlen047.JPG",
                   "isCorrect": false
                 },
                 {
-                  "answerText": "",
                   "answerImage": "Steinlen053.JPG",
                   "isCorrect": false
                 }
@@ -106,22 +102,18 @@
               "answers": [
                 {
                   "answerText": "Gauguin",
-                  "answerImage": "",
                   "isCorrect": true
                 },
                 {
                   "answerText": "Steinlen",
-                  "answerImage": "",
                   "isCorrect": false
                 },
                 {
                   "answerText": "Renoir",
-                  "answerImage": "",
                   "isCorrect": false
                 },
                 {
                   "answerText": "Toulouse Lautrec",
-                  "answerImage": "",
                   "isCorrect": false
                 }
               ]
@@ -145,7 +137,6 @@
               "questionType": "Input",
               "answers": [
                 {
-                  "answerText": "",
                   "isCorrect": true
                 }
               ]
@@ -157,7 +148,6 @@
               "questionType": "Input",
               "answers": [
                 {
-                  "answerText": "",
                   "isCorrect": true
                 }
               ]
@@ -175,17 +165,12 @@
           "pointsAddedForCorrectAnswer": 20,
           "questions": [
             {
-              "questionText": "",
-              "questionImage": "Steinlen042.jpg",
-              "answers": [
-                {
-                }
-              ]
+              "questionImage": "Steinlen042.jpg"
             }
           ]
         }
       ]
     }
   ]
-  
+
 }

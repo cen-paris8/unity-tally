@@ -12,8 +12,7 @@ public class SwipeTest : MonoBehaviour
     void Start()
     {
         desirePosition = player.transform.position;
-        posMax = player.transform.position.y + 800f;
-        posMin = player.transform.position.y - 800f;
+
     }
 
     // Update is called once per frame
@@ -29,8 +28,10 @@ public class SwipeTest : MonoBehaviour
             if (swipeControl.SwipeUp)
             {
                 desirePosition += Vector3.up;
-                if (desirePosition.y > posMax)
+
+                if (player.GetComponent<RectTransform>().anchoredPosition.y > 2694)
                 {
+                    desirePosition = player.transform.position;
                     return;
                 }
             }
@@ -38,8 +39,10 @@ public class SwipeTest : MonoBehaviour
             if (swipeControl.SwipeDown)
             {
                 desirePosition += Vector3.down;
-                if (desirePosition.y < posMin)
+
+                if (player.GetComponent<RectTransform>().anchoredPosition.y < 256)
                 {
+                    desirePosition = player.transform.position;
                     return;
                 }
             }

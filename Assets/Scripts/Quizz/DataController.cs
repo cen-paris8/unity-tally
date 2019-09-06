@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
 
@@ -7,22 +8,27 @@ public class DataController : MonoBehaviour
 {
     //List<RoundData> allRoundData = new List<RoundData>();
     public GameData[] gameDatas;
+    private DBHandler dbHandler;
 
     private PlayerProgress playerProgress;
     private string gameDataFileName = "data.json"; // A json for all game;
     private string resourcesPath = "Assets/Resources/";
-
+    private string firstScene;
 
 
     // Start is called before the first frame update
     // Go To Menu Screen.
-    void Start()
+    void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        LoadDataGame();
-        LoadPlayerProgress();
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Swipe");       
+        firstScene = "Map"; // "Swipe";
+        //LoadDataGame();
+
+        // Call in UseDataGame()
+        //LoadPlayerProgress();
+
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("Swipe");       
 
     }
 
@@ -74,27 +80,68 @@ public class DataController : MonoBehaviour
     {
         playerProgress = new PlayerProgress();
 
-        if (PlayerPrefs.HasKey("highestScore"))
+        /*
+         * if (PlayerPrefs.HasKey("highestScore"))
         {
             playerProgress.highestScore = PlayerPrefs.GetInt("highestScore");
         }
+        */
+        
+        Load();
     }
 
     private void SavePlayerProgress()
     {
-        PlayerPrefs.SetInt("highestScore", playerProgress.highestScore);
+        //PlayerPrefs.SetInt("highestScore", playerProgress.highestScore);
+        Save();
     }
 
-    private void LoadDataGame()
+    public void Save()
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        bf.Serialize(file, playerProgress);
+        file.Close();
+    }
+
+    public void Load()
+    {
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+            playerProgress = (PlayerProgress)bf.Deserialize(file);
+            file.Close();
+
+            //playerProgress.highestScore = playerData.score;
+
+        }
+
+
+    }
+    public void UseDataGame(string dataAsJson)
+    {
+        GameArrayData loadedData = JsonUtility.FromJson<GameArrayData>(dataAsJson);
+        gameDatas = loadedData.allGameData;
+        LoadPlayerProgress();
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(firstScene);       
+    }
+    public void LoadDataGame()
+    {
+        //String dataJson = dbHandler.Get
+        //GameArrayData loadedData = JsonUtility.FromJson<GameArrayData>(dataJson);
+        /*
+        gameDatas = loadedData.allGameData;
 
         if (File.Exists(filePath))
         {
             string dataAsJson = File.ReadAllText(filePath, Encoding.UTF8);
             GameArrayData loadedData = JsonUtility.FromJson<GameArrayData>(dataAsJson);
             gameDatas = loadedData.allGameData;
+
         }
+        */
     }
 
     public Sprite getImageSprite(string questionDataImage)
@@ -106,7 +153,6 @@ public class DataController : MonoBehaviour
             string filePath = resourcesPath + questionDataImage; // "RenoirValadon.jpg";
             Texture2D tex2D;
             byte[] fileData;
-
 
             if (File.Exists(filePath)) // filePath
             {
