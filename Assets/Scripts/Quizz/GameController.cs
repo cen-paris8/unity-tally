@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     public GameObject imageDisplay;
     public GameObject roundEndDisplay;
     public GameObject imagePresentDisplay;
+    public GameObject resultDisplay;
 
     private DataController dataController;
     private RoundData currentRoundData;
@@ -35,6 +36,8 @@ public class GameController : MonoBehaviour
     private List<GameObject> answerButtonGameObjects = new List<GameObject>();
     private List<GameObject> answerInputGameObjects = new List<GameObject>();
 
+    private QuestionData questionData;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,11 +47,14 @@ public class GameController : MonoBehaviour
         currentRoundData = dataController.GetCurrentRoundData(gameName);
         if (gameName == "EndGame")
         {
+            roundEndDisplay.GetComponentInChildren<Button>().GetComponentInChildren<Text>().text = "Fin";
             EndRound();
+        } else
+        {
+            imagePresentDisplay.GetComponent<Image>().sprite = dataController.getImageSprite(gameName);
+
         }
 
-        string imageName = gameName + ".jpg";
-        imagePresentDisplay.GetComponent<Image>().sprite = dataController.getImageSprite(imageName);
 
 
         questionPool = currentRoundData.questions;
@@ -65,7 +71,7 @@ public class GameController : MonoBehaviour
     private void ShowQuestion()
     {
         RemoveAnswerButton();
-        QuestionData questionData = questionPool[questionIndex];
+        questionData = questionPool[questionIndex];
         questionDisplayText.text = questionData.questionText;
         audioDisplay.GetComponent<AudioPanel>().audioClipCommand.GetComponent<AudioController>().UnloadAudio();
 
@@ -114,7 +120,10 @@ public class GameController : MonoBehaviour
                 answerButton.SetUp(questionData.answers[i]);
             }
         }
-        
+
+        dataController.debudText.text += "question display image : " + questionDisplay.GetComponent<Image>().sprite.name;
+
+
     }
 
     private void RemoveAnswerButton()
@@ -130,14 +139,34 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void AnswerButtonClicked(bool isCorrect)
+    public void ResultButtonClicked(bool isCorrect)
     {
         if (isCorrect)
         {
             playerScore += currentRoundData.pointsAddedForCorrectAnswer;
             scoreDisplayText.text = "Score: " + playerScore.ToString();
+            resultDisplay.GetComponentInChildren<Text>().text = "Bravo !";
+            resultDisplay.SetActive(true);
+        } else
+        {
+            string answerWas = "";
+            for (int i = 0; i < questionData.answers.Length; i++)
+            {
+                if (questionData.answers[i].isCorrect == true)
+                {
+                    answerWas = questionData.answers[i].answerText;
+                }
+            }
+                resultDisplay.GetComponentInChildren<Text>().text = "Non, la réponse était : " + answerWas;
+                resultDisplay.SetActive(true);
         }
-        
+
+       
+    }
+
+    public void AnswerButtonClicked()
+    {
+        resultDisplay.SetActive(false);
         if (questionPool.Length > questionIndex + 1)
         {
             questionIndex++;
@@ -177,6 +206,7 @@ public class GameController : MonoBehaviour
         highestScore.text = "High score: " + dataController.GetHighestPlayerScore().ToString();
 
         questionDisplay.SetActive(false);
+        imagePresentDisplay.SetActive(false);
         roundEndDisplay.SetActive(true);
     }
 

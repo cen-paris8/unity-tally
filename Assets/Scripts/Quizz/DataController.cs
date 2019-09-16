@@ -128,8 +128,15 @@ public class DataController : MonoBehaviour
         gameDatas = loadedData.allGameData;
         LoadPlayerProgress();
         //debudText.GetComponentInParent<Canvas>().gameObject.SetActive(false);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(firstScene);       
+        // Change Load Scene on Button
+        // UnityEngine.SceneManagement.SceneManager.LoadScene(firstScene);       
     }
+
+    public void OnClickLoadMap()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(firstScene);
+    }
+
     public void LoadDataGame()
     {
         //String dataJson = dbHandler.Get
@@ -149,38 +156,21 @@ public class DataController : MonoBehaviour
 
     public Sprite getImageSprite(string questionDataImage)
     {
-        //debudText.GetComponentInParent<Canvas>().gameObject.SetActive(true);
-        debudText.text += "; Image name : " + questionDataImage;
+        // Help Resources
+        // https://stackoverflow.com/questions/41326248/using-resources-folder-in-unity 
+        // Sprite sprite = Resources.Load("spriteFile", typeof(Sprite)) as Sp
 
-    Sprite newSprite;
-            Texture2D spriteTexture;
-            string filePath = resourcesPath + questionDataImage; // "RenoirValadon.jpg";
-            Texture2D tex2D;
-            byte[] fileData;
-        debudText.text += "; file path : " + filePath;
+           debudText.text += "; Image name : " + questionDataImage;
+        Debug.Log("questionDataImage : " + questionDataImage);
+            Sprite newSprite;
+            //Texture2D spriteTexture;
+            Texture2D spriteTexture = Resources.Load(questionDataImage, typeof(Texture2D)) as Texture2D; ;
+        Debug.Log("spriteTexture : " + spriteTexture);
 
-            if (File.Exists(filePath)) // filePath
-            {
-                print("File exists");
-            debudText.text += "; File exists  ";
-                fileData = File.ReadAllBytes(filePath);
-                tex2D = new Texture2D(2, 2);           // Create new "empty" texture
-                if (tex2D.LoadImage(fileData))
-                {
-                debudText.text += "; Load Image ";
-                print("Load Image");
-                    spriteTexture = tex2D; // If data = readable -> return texture
-                    newSprite = Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        //spriteTexture = tex2D; // If data = readable -> return texture
+            newSprite = Sprite.Create(spriteTexture, new Rect(0, 0, spriteTexture.width, spriteTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
 
-                //imageDisplay.GetComponent<Image>().sprite = newSprite;
-                return newSprite;
-                }
-            }
-        debudText.text += "; getImageSprite  ";
-        newSprite = null;
-        return newSprite;
-
-
+            return newSprite;
 
     }
 }

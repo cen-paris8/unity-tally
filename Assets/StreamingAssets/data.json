@@ -1,11 +1,11 @@
-﻿{
+{
   "allGameData": [
     {
       "name": "Quizz",
       "allRoundData": [
         {
           "name": "La belle époque",
-          "timeLimitInSeconds": 120,
+          "timeLimitInSeconds": 60,
           "pointsAddedForCorrectAnswer": 10,
           "questions": [
             {
@@ -31,7 +31,7 @@
             },
             {
               "questionText": "Qui a peint ce portrait de Suzanne Valadon?",
-              "questionImage": "RenoirValadon.jpg",
+              "questionImage": "RenoirValadon",
               "answers": [
                 {
                   "answerText": "Renoir",
@@ -73,26 +73,26 @@
       "allRoundData": [
         {
           "name": "Steinlen",
-          "timeLimitInSeconds": 30,
+          "timeLimitInSeconds": 60,
           "pointsAddedForCorrectAnswer": 10,
           "questions": [
             {
               "questionText": "Trouver l'intru. Quelle image n'est pas tirée d'un tableau de Steinlen?",
               "answers": [
                 {
-                  "answerImage": "Steinlen003.JPG",
+                  "answerImage": "Steinlen003",
                   "isCorrect": true
                 },
                 {
-                  "answerImage": "Steinlen042.JPG",
+                  "answerImage": "Steinlen042",
                   "isCorrect": false
                 },
                 {
-                  "answerImage": "Steinlen047.JPG",
+                  "answerImage": "Steinlen047",
                   "isCorrect": false
                 },
                 {
-                  "answerImage": "Steinlen053.JPG",
+                  "answerImage": "Steinlen053",
                   "isCorrect": false
                 }
               ]
@@ -127,8 +127,8 @@
       "allRoundData": [
         {
           "name": "Artistes contemporains",
-          "timeLimitInSeconds": 30,
-          "pointsAddedForCorrectAnswer": 10,
+          "timeLimitInSeconds": 5,
+          "pointsAddedForCorrectAnswer": 60,
           "questions": [
             {
               "questionText": "Quel célèbre musicien était fou amoureux de Suzanne Valadon ?",
@@ -161,11 +161,11 @@
       "allRoundData": [
         {
           "name": "Steinlen",
-          "timeLimitInSeconds": 120,
+          "timeLimitInSeconds": 60,
           "pointsAddedForCorrectAnswer": 20,
           "questions": [
             {
-              "questionImage": "Steinlen042.jpg"
+              "questionImage": "Steinlen047"
             }
           ]
         }
